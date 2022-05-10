@@ -7,11 +7,9 @@ FontSet is a LÖVE library for selecting and scaling LÖVE ImageFonts and BMFont
 
 A `font_set` table holds metadata associated with an ImageFont or BMFont. It can hold details of multiple subsets of the same ImageFont or BMFont, at different scales. When you call `font_set:reload()`, it generates or regenerates a LÖVE Font object which you can use for printing.
 
-A TTF size of 12 is presumed to have glyphs that require 12 pixel rows in order to be fully displayed. (Typically, the pipe glyph ("|") covers this vertical range.) Fonts typically have additional padding, making the size of whole lines about 1.25 times larger than the font size number. You may prefer to just treat size 12 as 1:1 scaling for ImageFonts, regardless of their actual size, but if you want to mix them with TTFs, there will be a height difference.
+LÖVE TTF sizes specify the height of glyphs in pixels, not including some padding. (Typically, the pipe glyph ("|") covers this vertical range.) You may prefer to just treat size 12 as 1:1 scaling for ImageFonts, regardless of their actual size, but if you want to mix them with TTFs, there will be a height difference.
 
-Pixel fonts look perfect with nearest filtering at integral scales. Fractional scales below 3.0 can get horribly mangled, with 1.5 being particularly bad. Personally, I think it's hard to tell the difference with 'nearest' above 4.0 (if it's not constantly changing scale, at least.) 'linear' filtering arguably looks better for 1.5 scale than 'nearest', but it gets very fuzzy beyond that.
-
-As a compromise, FontSet can swap in pre-scaled versions of the ImageFont with 'linear' filtering. It's still blurry at non-integral scales, but the extent of the blur is diminished at higher prescale values. This isn't free, however: a 4x prescaled ImageFont requires 16 times as much memory.
+Pixel fonts look perfect with `nearest` filtering at integral scales. This isn't always practical if you want scalable text. Fractional scales below 3.0 can get mangled, with 1.5 being particularly bad. `linear` filtering arguably looks better for 1.5 scale than `nearest`, but it gets very fuzzy beyond that. As a compromise, FontSet can swap in pre-scaled versions of the ImageFont with `linear` filtering. It's still blurry at non-integral scales, but the extent of the blur is diminished at higher prescale values. This isn't free, however: a 4x prescaled ImageFont requires 16 times as much memory.
 
 FontSet treats BMFonts nearly the same as ImageFonts. TrueType fonts are technically supported, but FontSet offers little value to them other than being able to keep track of the hinting mode and line height.
 

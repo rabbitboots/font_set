@@ -100,7 +100,7 @@ Generate a LÖVE Font object based on the current set configuration. This is the
 
 **Returns:** Nothing.
 
-*See:* [https://love2d.org/wiki/love.graphics.newImageFont](LÖVE Wiki: love.graphics.newImageFont)
+*See:* [LÖVE Wiki: love.graphics.newImageFont](https://love2d.org/wiki/love.graphics.newImageFont)
 
 
 ### self:setLineHeight
@@ -113,7 +113,7 @@ Set a font's line height. Can be called before the font object is created, and t
 
 **Returns:** Nothing.
 
-*See:* [https://love2d.org/wiki/Font:setLineHeight](LÖVE Wiki: Font:setLineHeight)
+*See:* [LÖVE Wiki: Font:setLineHeight](https://love2d.org/wiki/Font:setLineHeight)
 
 
 ### self:setScaleMode
@@ -150,22 +150,22 @@ Sets the font's `min`, `mag` and `anisotropy` settings. Can be called before the
 
 **Returns:** Nothing.
 
-*See:* [https://love2d.org/wiki/Font:setFilter](LÖVE Wiki: Font:setFilter)
+*See:* [LÖVE Wiki: Font:setFilter](https://love2d.org/wiki/Font:setFilter)
 
 
 ## Usage Notes
 
-The demo may give the impression that FontSet is intended for constantly scaling text. Not so! Reloading fonts is an expensive operation, especially at large sizes. It's assumed that loading/reloading only happens during boot / load times, or when the UI scale settings change at the request of the user (or something semi-automated prompted a change, like if the UI scale is keyed to the window size). For fluid, sprite-like text printing, you may want to try something like [https://github.com/sysl-dev/SYSL-Text](SYSL-Text) instead.
+The demo may give the impression that FontSet is intended for constantly scaling text. Not so! Reloading fonts is an expensive operation, especially at large sizes. It's assumed that loading/reloading only happens during boot / load times, or when the UI scale settings change at the request of the user (or something semi-automated prompted a change, like if the UI scale is keyed to the window size). For fluid, sprite-like text printing, you may want to try something like [SYSL-Text](https://github.com/sysl-dev/SYSL-Text) instead.
 
 By default, when a reload occurs, it releases old font objects, and calls the garbage collector twice to ensure they are cleaned up. Be careful about dangling font references. If you just want unattached Font objects, you can use the `font_set:spawnFontObject()` method.
 
 The LÖVE wiki advises against printing text at non-integer positions, because it may result in blurry text. Non-integral scaling of pixel art text guarantees that this will happen. Such is life.
 
-Under normal circumstances, FontSet does not handle the assignment of fallback fonts. This info is lost upon reloading, since new Font objects are created, so they need to be set every time a reload occurs. More info on that feature [https://love2d.org/wiki/Font:setFallbacks](here).
+FontSet does not handle the assignment of fallback fonts. This info is lost upon reloading, since new Font objects are created, so they need to be set every time a reload occurs. More info on that feature [here](https://love2d.org/wiki/Font:setFallbacks).
 
 A suitably high MSAA value might achieve smooth results with 'nearest' font filtering. You can print to a MSAA-enabled canvas / texture without applying MSAA to the main framebuffer.
 
-BMFont is more advanced than LÖVE's ImageFonts, but your results will vary depending on the program you use to make them. The BMFonts included in the demo were generated with [https://github.com/vladimirgamalyan/fontbm](fontbm), a cross-platform command line utility.
+BMFont is more advanced than LÖVE's ImageFonts, but your results will vary depending on the program you use to make them. The BMFonts included in the demo were generated with [fontbm](https://github.com/vladimirgamalyan/fontbm), a cross-platform command line utility.
 
 
 ## License

@@ -155,7 +155,7 @@ Sets the font's `min`, `mag` and `anisotropy` settings. Can be called before the
 
 ## Usage Notes
 
-The demo may give the impression that FontSet is intended for constantly scaling text. Not so! Reloading fonts is an expensive operation, especially at large sizes. It's assumed that loading/reloading only happens during boot / load times, or when the UI scale settings change at the request of the user (or something semi-automated prompted a change, like if the UI scale is keyed to the window size). For fluid, sprite-like text printing, you may want to try something like [SYSL-Text](https://github.com/sysl-dev/SYSL-Text) instead.
+The demo may give the impression that FontSet is intended for constantly scaling text. Not so! Reloading fonts is an expensive operation, especially at large sizes. It's assumed that loading/reloading only happens during boot-up, during load screens, or when the UI scale settings change at the request of the user (or something semi-automated prompts a change, like if the UI scale is keyed to the window size). For fluid, sprite-like text printing, you may want to try something like [SYSL-Text](https://github.com/sysl-dev/SYSL-Text) instead.
 
 By default, when a reload occurs, it releases old font objects, and calls the garbage collector twice to ensure they are cleaned up. Be careful about dangling font references. If you just want unattached Font objects, you can use the `font_set:spawnFontObject()` method.
 

@@ -1,9 +1,11 @@
-This was converted from a LÖVE ImageFont to TTF using YellowAfterlife's 'Pixel Font Converter!' tool. I'm not sure if I did it correctly, so it's commented out in the FontSet demo program.
+This was converted from a LÖVE ImageFont to TTF using YellowAfterlife's 'Pixel Font Converter!' tool.
+I'm not sure if I did it correctly, so it's commented out in the FontSet demo program.
 
 https://yellowafterlife.itch.io/pixelfont
 
 
-I'm also not sure how OFL works with bitmapped / raster fonts, or TTF fonts that are semi-automatically generated from tools, so I guess I'll release this font as CC0.
+I'm also not sure how OFL works with bitmapped / raster fonts, or TTF fonts that are semi-automatically
+generated from tools, so I guess I'll release this font as CC0.
 
 https://creativecommons.org/publicdomain/zero/1.0/
 

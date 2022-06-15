@@ -9,9 +9,6 @@ love.keyboard.setKeyRepeat(true)
 
 local fontSet = require("font_set")
 
--- MSAA could help smooth out nearest-neighbor text.
-local demo_msaa = 0
-
 local translate_y = 0 -- Y scroll
 
 -- Clamps the font scale.
@@ -24,7 +21,6 @@ local demo_canvas_scale = 1
 -- Grab some defaults and other system info.
 local orig_font = love.graphics.newFont(12)
 local gfx_limits = love.graphics.getSystemLimits()
-local msaa_max = gfx_limits.canvasmsaa
 
 local font_scale = 1.0
 local font_pt = 12 -- This is roughly font_scale * 12
@@ -38,7 +34,7 @@ local function reloadCanvas()
 		canvas:release()
 		canvas = false
 	end
-	canvas = love.graphics.newCanvas(love.graphics.getWidth(), love.graphics.getHeight(), {msaa = demo_msaa})
+	canvas = love.graphics.newCanvas(love.graphics.getWidth(), love.graphics.getHeight(), {})
 	canvas:setFilter("nearest", "nearest")
 
 	collectgarbage("collect")
@@ -381,14 +377,6 @@ function love.keypressed(kc, sc)
 	elseif sc == "=" then
 		demo_canvas_scale = math.min(64, demo_canvas_scale + 0.125)
 
-	elseif sc == "9" then
-		demo_msaa = math.max(demo_msaa - 1, 0)
-		reloadCanvas()
-
-	elseif sc == "0" then
-		demo_msaa = math.min(demo_msaa + 1, msaa_max)
-		reloadCanvas()
-
 	elseif sc == "tab" then
 		love.window.setVSync(1 - love.window.getVSync())
 	end
@@ -478,10 +466,10 @@ function love.draw()
 	lg.setColor(1,1,1,1)
 
 	lg.setFont(orig_font)
-	lg.print("font_scale: " .. font_scale .. "\ncanvas scale: " .. demo_canvas_scale .. "\nFPS: " .. love.timer.getFPS() .. "\nAvgDelta: " .. love.timer.getAverageDelta() .. "\nMSAA: " .. demo_msaa .. "/" .. msaa_max, 16, lg.getHeight() - 96)
+	lg.print("font_scale: " .. font_scale .. "\ncanvas scale: " .. demo_canvas_scale .. "\nFPS: " .. love.timer.getFPS() .. "\nAvgDelta: " .. love.timer.getAverageDelta(), 16, lg.getHeight() - 96)
 
 	-- Print controls
 	lg.print("(up/down) change size\n(ctrl+up/ctrl+down) change size, but, like, slower\n(pgup/pgdn) Scroll Y\n(1-3) Change View\n(8/*) Round scale", lg.getWidth() - 488, lg.getHeight() - 96)
-	lg.print("(-/=) Scale canvas\n(9/0) change MSAA\n(tab) Toggle VSync", lg.getWidth() - 160, lg.getHeight() - 96)
+	lg.print("(-/=) Scale canvas\n(tab) Toggle VSync", lg.getWidth() - 160, lg.getHeight() - 96)
 end
 

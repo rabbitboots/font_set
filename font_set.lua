@@ -1,6 +1,6 @@
 -- FontSet: A library for sizing LÖVE fonts within the context of a scalable UI.
 -- See README.md for info and license details.
--- Version 1.0.0
+-- Version 1.0.1
 
 local fontSet = {}
 

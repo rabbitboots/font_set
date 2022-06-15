@@ -164,8 +164,6 @@ Sets the font's `min`, `mag` and `anisotropy` settings. Can be called before the
 
 * The LÖVE wiki advises against printing text at non-integer positions, because it may result in blurry text. Non-integral scaling of pixel art text guarantees that this will happen. Such is life.
 
-* A suitably high MSAA value might achieve smooth results with 'nearest' font filtering. You can print to a MSAA-enabled canvas / texture without applying MSAA to the main framebuffer.
-
 
 ### Font Setup
 
